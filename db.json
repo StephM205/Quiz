@@ -1,0 +1,17 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "Bài kiểm tra Toán",
+      "description": "Kiểm tra kiến thức Toán cơ bản",
+      "questions": [
+        {
+          "id": 1,
+          "question": "1 + 1 bằng bao nhiêu?",
+          "options": ["1", "2", "3", "4"],
+          "correctAnswer": 1
+        }
+      ]
+    }
+  ]
+}
