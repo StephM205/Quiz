@@ -24,7 +24,7 @@ let timeLimit = 3600; // 20 phút (1200 giây)
 let shuffledQuestions = [];
 let wrongQuestions = [];
 let isDarkMode = true;
-const API_URL = "http://localhost:3000/quizzes";
+const API_URL = "https://4n2fh9-8080.csb.app/quizzes";
 
 // Dữ liệu thống kê
 let quizHistory = [];

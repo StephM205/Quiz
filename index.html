@@ -161,9 +161,10 @@
         <div class="particles" id="particles"></div>
         <div class="history-item float-animation" style="animation-delay: 1s">
           <img
-            src="https://media.vov.vn/sites/default/files/styles/large/public/2023-05/bac-ho-voi-tuyen-ngon.jpg"
+            src="./qr.jpg"
             alt="Cờ Việt Nam"
             class="history-img"
+            width="100%"
           />
         </div>
         <h1 class="home-title slide-in">
@@ -1042,5 +1043,13 @@
         ></div>
       </div>
     </footer>
+
+    <audio autoplay loop id="audioPlayer">
+      <source src="./videoplayback.m4a" type="audio/mpeg" />
+    </audio>
+    <script>
+      const audioPlayer = document.getElementById("audioPlayer");
+      audioPlayer.volume = 0.04;
+    </script>
   </body>
 </html>
