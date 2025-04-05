@@ -9,6 +9,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="footer.css" />
 
     <!-- Font Awesome -->
     <link
@@ -27,12 +30,24 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+
   <body class="min-h-screen antialiased">
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50">
       <nav
         class="header-nav shadow-lg transition-all duration-300 hover:shadow-xl backdrop-blur-md bg-opacity-90"
       >
+        <video
+          style="
+            height: 81px;
+            width: 500px;
+            position: absolute;
+            margin-left: -180px;
+          "
+          src="https://cdn.pixabay.com/video/2022/09/22/132235-752803332_large.mp4"
+          autoplay
+          loop
+        ></video>
         <div
           class="container mx-auto px-6 py-4 flex items-center justify-between"
         >
@@ -50,7 +65,7 @@
             <h2
               class="text-sm md:text-lg font-extrabold text-white tracking-wider group-hover:text-purple-200 transition-colors duration-300 whitespace-nowrap"
             >
-              KIẾN THỨC CHÍNH TRỊ
+              CHÍNH TRỊ
             </h2>
           </a>
           <div
@@ -94,20 +109,23 @@
                 class="absolute bottom-0 left-1/2 w-0 h-1 bg-white rounded-full group-hover:w-3/4 transition-all duration-300 transform -translate-x-1/2"
               ></span>
             </a>
-            <a
-              href="#"
-              id="statsLink"
-              class="nav-item text-white font-semibold text-sm md:text-lg relative group whitespace-nowrap"
-              aria-label="Thống kê"
-            >
+          </div>
+
+          <div
+            class="flex justify-center mb-0 slide-in"
+            style="animation-delay: 0.3s"
+          >
+            <div class="relative">
+              <input
+                type="text"
+                id="searchQuiz"
+                placeholder="Tìm kiếm bài trắc nghiệm..."
+                class="w-full md:w-96 px-4 py-3 rounded-full border border-dark-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-dark-700 white:text-white shadow-md"
+              />
               <i
-                class="fas fa-chart-bar mr-2 transform group-hover:scale-110 transition-transform duration-300"
+                class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-dark-400"
               ></i>
-              Thống kê
-              <span
-                class="absolute bottom-0 left-1/2 w-0 h-1 bg-white rounded-full group-hover:w-3/4 transition-all duration-300 transform -translate-x-1/2"
-              ></span>
-            </a>
+            </div>
           </div>
         </div>
         <div
@@ -131,14 +149,6 @@
             >
               <i class="fas fa-book mr-3 w-6 text-center"></i> Bài tập
             </a>
-            <a
-              href="#"
-              id="mobileStatsLink"
-              class="mobile-menu-link flex items-center hover:text-purple-700 transition-colors duration-300 p-3 rounded-lg hover:bg-white hover:bg-opacity-10"
-              aria-label="Thống kê"
-            >
-              <i class="fas fa-chart-bar mr-3 w-6 text-center"></i> Thống kê
-            </a>
           </div>
         </div>
       </nav>
@@ -149,20 +159,18 @@
       <div class="home-container">
         <div class="home-background"></div>
         <div class="particles" id="particles"></div>
-        <img
-          src="./image/logo.png"
-          alt="FPT Polytecnich"
-          style="width: 200px; margin-left: 40px"
-        />
+        <div class="history-item float-animation" style="animation-delay: 1s">
+          <img
+            src="https://media.vov.vn/sites/default/files/styles/large/public/2023-05/bac-ho-voi-tuyen-ngon.jpg"
+            alt="Cờ Việt Nam"
+            class="history-img"
+          />
+        </div>
         <h1 class="home-title slide-in">
-          Chào mừng đến với<br />Bộ Câu Hỏi Ôn Tập Trắc Nghiệm Môn Chính Trị
+          <br />Bộ Câu Hỏi Ôn Tập Môn Chính Trị
         </h1>
-        <p class="home-description slide-in" style="animation-delay: 0.2s">
-          Nâng cao kiến thức của bạn với các bài trắc nghiệm thú vị và thử
-          thách!
-        </p>
 
-        <h1 style="font-size: 30px">QR PHẢN HỒI</h1>
+        <!-- <h1 style="font-size: 30px">QR PHẢN HỒI</h1> -->
 
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLScZn8Kqs97hpsdSOV53GlwmJYIIuVo9tknNlXQ7HdYcZNQ5BA/viewform?usp=dialog"
@@ -183,167 +191,230 @@
           <i class="fas fa-play-circle"></i> Bắt đầu ngay
         </button>
 
-        <div
-          class="mt-8 flex flex-wrap gap-4 justify-center slide-in"
-          style="animation-delay: 0.6s"
-        >
-          <div class="feature-card flex items-center justify-center p-4 w-64">
-            <i class="fas fa-medal text-4xl text-amber-400 mr-3"></i>
-            <div class="text-left">
-              <h3 class="font-bold feature-card-text">Thử thách</h3>
-              <p class="text-sm feature-card-subtext">Kiểm tra kiến thức</p>
-            </div>
+        <p class="home-subtitle" style="margin-top: 100px">
+          Khám phá lịch sử và giá trị của Đảng Cộng sản Việt Nam
+        </p>
+
+        <!-- Political History Images -->
+        <div class="history-images">
+          <div class="history-item float-animation">
+            <img
+              src="https://baodanang.vn/dataimages/201711/original/images1405845_1_lenin_8_youtube_CTQP.jpg"
+              alt="Mác Lenin"
+              class="history-img"
+            />
+            <div class="history-caption">Chủ tịch Hồ Chí Minh</div>
           </div>
-          <div class="feature-card flex items-center justify-center p-4 w-64">
-            <i class="fas fa-chart-line text-4xl text-emerald-400 mr-3"></i>
-            <div class="text-left">
-              <h3 class="font-bold feature-card-text">Tiến bộ</h3>
-              <p class="text-sm feature-card-subtext">Theo dõi kết quả</p>
-            </div>
+          <div class="history-item float-animation" style="animation-delay: 1s">
+            <img
+              src="https://media.vov.vn/sites/default/files/styles/large/public/2023-05/bac-ho-voi-tuyen-ngon.jpg"
+              alt="Cờ Việt Nam"
+              class="history-img"
+            />
+            <div class="history-caption">Ngày Độc lập</div>
           </div>
-          <div class="feature-card flex items-center justify-center p-4 w-64">
-            <i class="fas fa-lightbulb text-4xl text-blue-400 mr-3"></i>
-            <div class="text-left">
-              <h3 class="font-bold feature-card-text">Học tập</h3>
-              <p class="text-sm feature-card-subtext">Mở rộng kiến thức</p>
-            </div>
+          <div class="history-item float-animation" style="animation-delay: 2s">
+            <img
+              src="https://mediafile.qdnd.vn/images/2024/3/12/cover-2.jpg"
+              alt="Điện Biên Phủ"
+              class="history-img"
+            />
+            <div class="history-caption">Chiến thắng Điện Biên Phủ</div>
           </div>
         </div>
 
-        <!-- Thống kê tổng quan -->
-        <div
-          class="w-full max-w-6xl mt-12 slide-in"
-          style="animation-delay: 0.8s"
-        >
-          <h2 class="text-2xl font-bold mb-6 text-center feature-card-text">
-            Thống kê của bạn
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="stats-card">
-              <div
-                class="stats-icon bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400"
-              >
-                <i class="fas fa-clipboard-check text-xl"></i>
-              </div>
-              <h3 class="stats-title">Bài đã hoàn thành</h3>
-              <p class="stats-value" id="completedQuizzes">0</p>
-              <div class="stats-trend up">
-                <i class="fas fa-arrow-up"></i>
-                <span id="completedQuizzesTrend">0%</span> so với tuần trước
-              </div>
-            </div>
-
-            <div class="stats-card">
-              <div
-                class="stats-icon bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
-              >
-                <i class="fas fa-star text-xl"></i>
-              </div>
-              <h3 class="stats-title">Điểm trung bình</h3>
-              <p class="stats-value" id="averageScore">0.0</p>
-              <div class="stats-trend up">
-                <i class="fas fa-arrow-up"></i>
-                <span id="averageScoreTrend">0%</span> so với tuần trước
-              </div>
-            </div>
-
-            <div class="stats-card">
-              <div
-                class="stats-icon bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400"
-              >
-                <i class="fas fa-check-circle text-xl"></i>
-              </div>
-              <h3 class="stats-title">Tỷ lệ đúng</h3>
-              <p class="stats-value" id="correctRate">0%</p>
-              <div class="stats-trend up">
-                <i class="fas fa-arrow-up"></i>
-                <span id="correctRateTrend">0%</span> so với tuần trước
-              </div>
-            </div>
-
-            <div class="stats-card">
-              <div
-                class="stats-icon bg-amber-100 dark:bg-amber-900 text-amber-600 dark:text-amber-400"
-              >
-                <i class="fas fa-clock text-xl"></i>
-              </div>
-              <h3 class="stats-title">Thời gian trung bình</h3>
-              <p class="stats-value" id="averageTime">00:00</p>
-              <div class="stats-trend down">
-                <i class="fas fa-arrow-down"></i>
-                <span id="averageTimeTrend">0%</span> so với tuần trước
-              </div>
-            </div>
+        <!-- Party Icons with Animation -->
+        <div class="party-icons">
+          <div
+            class="icon-container glow-animation"
+            style="animation-delay: 0.5s"
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=8ej4paklepP7&format=png&color=FA5252"
+              alt="Ngôi Sao"
+              class="party-icon"
+            />
           </div>
+          <div
+            class="icon-container glow-animation"
+            style="animation-delay: 1s"
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=f3q3YscGuOjY&format=png&color=FA5252"
+              alt="Cờ Đảng"
+              class="party-icon"
+            />
+          </div>
+        </div>
 
-          <!-- Biểu đồ thống kê -->
-          <div class="chart-container">
-            <div class="chart-header">
-              <h3 class="chart-title">Kết quả 7 ngày gần đây</h3>
-              <div class="chart-legend">
-                <div class="legend-item">
-                  <div
-                    class="legend-color"
-                    style="background-color: #8b5cf6"
-                  ></div>
-                  <span>Điểm số</span>
-                </div>
-                <div class="legend-item">
-                  <div
-                    class="legend-color"
-                    style="background-color: #10b981"
-                  ></div>
-                  <span>Tỷ lệ đúng</span>
-                </div>
+        <div class="hero-section">
+          <p class="home-subtitle" class="history-item float-animation">
+            Tôn vinh các anh hùng và chiến thắng vĩ đại của dân tộc
+          </p>
+          <!-- Historical Events with Heroes -->
+          <div class="history-events">
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://www.baoquangbinh.vn/dataimages/201507/original/images582330_anh2.jpg"
+                alt="Võ Văn Giáp"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">
+                  Võ Văn Giáp - Chiến thắng Điện Biên Phủ (1954)
+                </h3>
+                <p class="event-desc">
+                  Đây là chiến thắng mang tính quyết định trong cuộc kháng chiến
+                  chống Pháp.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Sau 56 ngày đêm chiến đấu (13/3 - 7/5/1954), quân đội Việt Nam
+                  đánh bại tập đoàn cứ điểm Điện Biên Phủ, buộc Pháp phải ký
+                  Hiệp định Genève, chấm dứt chiến tranh ở Đông Dương.
+                </p>
               </div>
             </div>
-            <canvas id="statsChart" height="250"></canvas>
-          </div>
-
-          <!-- Bài kiểm tra gần đây -->
-          <div class="mt-8">
-            <h3 class="text-xl font-bold mb-4 feature-card-text">
-              Bài kiểm tra gần đây
-            </h3>
-            <div class="overflow-x-auto">
-              <table class="w-full bg-white dark:bg-gray-800 rounded-lg shadow">
-                <thead>
-                  <tr class="text-left bg-gray-100 dark:bg-gray-700">
-                    <th
-                      class="px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
-                    >
-                      Tên bài
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
-                    >
-                      Ngày làm
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
-                    >
-                      Điểm
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
-                    >
-                      Thời gian
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
-                    >
-                      Trạng thái
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  id="recentQuizTable"
-                  class="divide-y divide-gray-200 dark:divide-gray-600"
-                >
-                  <!-- Dữ liệu sẽ được thêm vào bằng JavaScript -->
-                </tbody>
-              </table>
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://nguoikesu.com/images/wiki/phan-dinh-giot/dbdc641ccccc8f0733857080ab31cc3b.jpg"
+                alt="Trần Hưng Đạo"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">
+                  Phan Đình Giót - Chiến thắng Điện Biên Phủ (1954)
+                </h3>
+                <p class="event-desc">
+                  Góp phần quan trọng vào chiến thắng Điện Biên Phủ, chấm dứt sự
+                  cai trị của thực dân Pháp ở Đông Dương.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Trong trận đánh đồi Him Lam, khi quân ta gặp khó khăn do hỏa
+                  lực địch quá mạnh, Phan Đình Giót đã lấy thân mình lấp lỗ châu
+                  mai, giúp đồng đội xung phong đánh chiếm cứ điểm.
+                </p>
+              </div>
             </div>
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://th.bing.com/th/id/OIP.igmi2abT4dfbcbGWA-xT8wAAAA?rs=1&pid=ImgDetMain"
+                alt="Lê Lợi"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">
+                  Bế Văn Đàn - Chiến thắng Điện Biên Phủ (1954)
+                </h3>
+                <p class="event-desc">
+                  Hành động anh dũng của anh giúp quân ta chiếm được cứ điểm
+                  quan trọng.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Khi đồng đội bị thương và không còn ai giữ súng đại liên, Bế
+                  Văn Đàn đã quỳ xuống, lấy vai làm giá súng để đồng đội tiếp
+                  tục bắn
+                </p>
+              </div>
+            </div>
+
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://1.bp.blogspot.com/-U9JQlbUdYA8/W3lnkNNl1nI/AAAAAAAAgPc/dR2tZS69LbMBcHz1xdR8HCLwsUq6UvaegCLcBGAs/s1600/NgVanTroi-sB.jpg"
+                alt="Nguyễn Văn Trỗi"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">Nguyễn Văn Trỗi - Anh hùng chống Mỹ</h3>
+                <p class="event-desc">
+                  Bị bắt và hy sinh khi thực hiện nhiệm vụ ám sát Bộ trưởng Quốc
+                  phòng Mỹ năm 1964.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Nguyễn Văn Trỗi bị bắt khi thực hiện nhiệm vụ ám sát Bộ trưởng
+                  Quốc phòng Mỹ. Trước khi bị xử bắn, anh hô vang khẩu hiệu cách
+                  mạng và thể hiện tinh thần kiên trung bất khuất.
+                </p>
+              </div>
+            </div>
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://th.bing.com/th/id/OIP.xaCPerp8tOtlZaA8_3Y7lgAAAA?rs=1&pid=ImgDetMain"
+                alt="Võ Thị Sáu"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">Võ Thị Sáu - Nữ anh hùng chống Pháp</h3>
+                <p class="event-desc">
+                  Bị bắt khi hoạt động cách mạng và bị thực dân Pháp xử bắn năm
+                  1952.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Võ Thị Sáu tham gia cách mạng từ khi còn rất trẻ. Bị bắt và
+                  kết án tử hình, nhưng cô vẫn giữ vững tinh thần, hát vang bài
+                  ca cách mạng trước khi hy sinh.
+                </p>
+              </div>
+            </div>
+            <div class="event-item">
+              <img
+                style="height: 400px"
+                src="https://thptlytutrongbinhdinh.vn/wp-content/uploads/2017/12/ltt.jpg"
+                alt="Lý Tự Trọng"
+                class="event-img"
+              />
+              <div class="event-content glass">
+                <h3 class="event-title">
+                  Lý Tự Trọng - Người thanh niên dũng cảm
+                </h3>
+                <p class="event-desc">
+                  Người đặt nền móng cho phong trào thanh niên cách mạng Việt
+                  Nam.
+                </p>
+                <button class="detail-btn">Xem chi tiết</button>
+              </div>
+              <div class="event-detail">
+                <h4>Chi tiết sự kiện</h4>
+                <p>
+                  Lý Tự Trọng bị bắt khi ám sát mật thám Pháp. Khi ra pháp
+                  trường, anh tuyên bố: "Con đường của thanh niên chỉ có thể là
+                  con đường cách mạng và không thể có con đường nào khác."
+                </p>
+              </div>
+            </div>
+
+            <script>
+              document.querySelectorAll(".detail-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  const detail = btn.parentElement.nextElementSibling;
+                  detail.classList.toggle("active");
+                });
+              });
+            </script>
           </div>
         </div>
       </div>
@@ -352,9 +423,7 @@
     <!-- Quiz List Container -->
     <div id="quizContainer" class="pt-24 pb-12 hidden quiz-transition">
       <div class="container mx-auto px-4 max-w-6xl">
-        <h2
-          class="text-3xl font-bold text-center mb-4 text-dark-800 dark:text-dark slide-in"
-        >
+        <h2 class="home-title slide-in" style="text-align: center">
           Danh sách bài trắc nghiệm
         </h2>
         <p
@@ -363,23 +432,6 @@
         >
           Chọn một bài trắc nghiệm để bắt đầu thử thách kiến thức của bạn
         </p>
-
-        <div
-          class="flex justify-center mb-8 slide-in"
-          style="animation-delay: 0.3s"
-        >
-          <div class="relative">
-            <input
-              type="text"
-              id="searchQuiz"
-              placeholder="Tìm kiếm bài trắc nghiệm..."
-              class="w-full md:w-96 px-4 py-3 rounded-full border border-dark-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-dark-700 white:text-white shadow-md"
-            />
-            <i
-              class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-dark-400"
-            ></i>
-          </div>
-        </div>
 
         <div
           id="quizList"
@@ -762,65 +814,233 @@
               <i class="fas fa-home"></i> Về trang chủ
             </button>
           </div>
-
-          <div
-            class="mt-8 p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg text-center shadow-md"
-          >
-            <h3 class="font-bold text-purple-700 dark:text-purple-400 mb-2">
-              Chia sẻ kết quả của bạn
-            </h3>
-            <div class="flex justify-center gap-3 mt-2">
-              <button
-                class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-all shadow-md"
-                aria-label="Chia sẻ qua Facebook"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </button>
-              <button
-                class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition-all shadow-md"
-                aria-label="Chia sẻ qua Twitter"
-              >
-                <i class="fab fa-twitter"></i>
-              </button>
-              <button
-                class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all shadow-md"
-                aria-label="Chia sẻ qua WhatsApp"
-              >
-                <i class="fab fa-whatsapp"></i>
-              </button>
-              <button
-                class="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition-all shadow-md"
-                aria-label="Chia sẻ qua LinkedIn"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Custom Modal -->
-    <div id="customModal" class="modal-overlay hidden">
-      <div class="modal-content">
-        <h3 id="modalTitle" class="modal-title"></h3>
-        <p id="modalMessage" class="modal-message"></p>
-        <div id="modalButtons" class="modal-buttons"></div>
-      </div>
-    </div>
-
-    <!-- Theme Toggle Button -->
-    <div
-      id="themeToggle"
-      class="theme-toggle"
-      aria-label="Chuyển đổi chế độ sáng/tối"
-    >
-      <i class="fas fa-moon"></i>
     </div>
 
     <!-- Confetti Container -->
     <div id="confettiContainer" class="confetti-container"></div>
 
     <script src="app.js"></script>
+
+    <!-- Footer -->
+    <footer
+      class="footer bg-dark-900 text-white py-12 relative overflow-hidden"
+    >
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- About Section -->
+          <div class="footer-section">
+            <h3
+              class="text-xl font-bold mb-4 gradient-flow text-transparent bg-clip-text"
+            >
+              Về Chúng Tôi
+            </h3>
+            <p class="text-dark-300 dark:text-dark-400">
+              Ứng dụng trắc nghiệm kiến thức chính trị Đảng Cộng sản Việt Nam
+              nhằm tôn vinh lịch sử và giáo dục thế hệ trẻ.
+            </p>
+            <div class="mt-4">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
+                alt="Cờ Việt Nam"
+                class="w-16 h-auto rounded shadow-md transform hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          <!-- Links Section -->
+          <div class="footer-section">
+            <h3
+              class="text-xl font-bold mb-4 gradient-flow text-transparent bg-clip-text"
+            >
+              Liên Kết
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#homeLink"
+                  class="hover:text-primary transition-colors flex items-center"
+                  ><i class="fas fa-home mr-2"></i> Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#quizLink"
+                  class="hover:text-primary transition-colors flex items-center"
+                  ><i class="fas fa-book mr-2"></i> Bài trắc nghiệm</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.hcmcpv.org.vn/"
+                  target="_blank"
+                  class="hover:text-primary transition-colors flex items-center"
+                  ><i class="fas fa-link mr-2"></i> HCMCPV</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://fpt.edu.vn/"
+                  target="_blank"
+                  class="hover:text-primary transition-colors flex items-center"
+                  ><i class="fas fa-university mr-2"></i> FPT Polytechnic</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="footer-section">
+            <h3
+              class="text-xl font-bold mb-4 gradient-flow text-transparent bg-clip-text"
+            >
+              Liên Hệ
+            </h3>
+            <p class="text-dark-300 dark:text-dark-400">
+              Email:
+              <a
+                href="mailto:support@tracnghiemdang.vn"
+                class="hover:text-primary"
+                >support@tracnghiemdang.vn</a
+              ><br />
+              Điện thoại: 0123-456-789<br />
+              Địa chỉ: FPT Polytechnic, Việt Nam
+            </p>
+            <div class="mt-4 flex space-x-4">
+              <a
+                href="#"
+                class="text-white hover:text-primary transition-colors transform hover:scale-125 duration-300"
+              >
+                <i class="fab fa-facebook-f text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-primary transition-colors transform hover:scale-125 duration-300"
+              >
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-primary transition-colors transform hover:scale-125 duration-300"
+              >
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- QR Code & Feedback Section -->
+          <div class="footer-section">
+            <h3
+              class="text-xl font-bold mb-4 gradient-flow text-transparent bg-clip-text"
+            >
+              Phản Hồi
+            </h3>
+            <p class="text-dark-300 dark:text-dark-400 mb-4">
+              Quét mã QR để gửi phản hồi của bạn:
+            </p>
+            <div class="relative group">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScZn8Kqs97hpsdSOV53GlwmJYIIuVo9tknNlXQ7HdYcZNQ5BA/viewform?usp=dialog"
+              >
+                <img
+                  src="image/QR_PhanHoi.png"
+                  alt="QR Phản Hồi"
+                  class="w-32 h-32 rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </a>
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 rounded-lg transition-opacity duration-300"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Content -->
+        <div class="mt-12 border-t border-dark-700 pt-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <!-- Inspirational Quote -->
+            <div class="footer-extra">
+              <h4 class="text-lg font-semibold mb-2 text-primary">
+                Lời Hay Ý Đẹp
+              </h4>
+              <p class="text-dark-400 italic">
+                "Không có gì quý hơn độc lập, tự do" - Hồ Chí Minh
+              </p>
+            </div>
+
+            <!-- Mini Gallery -->
+            <div class="footer-extra">
+              <h4 class="text-lg font-semibold mb-2 text-primary">
+                Hình Ảnh Lịch Sử
+              </h4>
+              <div class="flex justify-center space-x-4">
+                <img
+                  src="https://media.vov.vn/sites/default/files/styles/large/public/2023-05/bac-ho-voi-tuyen-ngon.jpg"
+                  alt="Hồ Chí Minh"
+                  class="w-16 h-16 object-cover rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+                />
+                <img
+                  src="https://mediafile.qdnd.vn/images/2024/3/12/cover-2.jpg"
+                  alt="Điện Biên Phủ"
+                  class="w-16 h-16 object-cover rounded-full shadow-md hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="footer-extra">
+              <h4 class="text-lg font-semibold mb-2 text-primary">
+                Thống Kê Nhanh
+              </h4>
+              <p class="text-dark-400">
+                Đã có <span class="font-bold text-primary">10,000+</span> lượt
+                làm bài!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 text-center text-dark-400 dark:text-dark-500">
+          <p>
+            &copy; 2025 Trắc Nghiệm Đảng Cộng Sản Việt Nam. Sản Phẩm Của Team
+            Chúng Tôi
+          </p>
+          <p class="text-sm">
+            Designed with <i class="fas fa-heart text-red-500"></i> by FPT
+            Polytechnic Team
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Particles with Enhanced Effects -->
+      <div class="footer-particles absolute inset-0 pointer-events-none">
+        <div
+          class="particle"
+          style="left: 10%; animation-duration: 15s; background: #ff6b6b"
+        ></div>
+        <div
+          class="particle"
+          style="left: 25%; animation-duration: 18s; background: #4ecdc4"
+        ></div>
+        <div
+          class="particle"
+          style="left: 40%; animation-duration: 20s; background: #ffe66d"
+        ></div>
+        <div
+          class="particle"
+          style="left: 55%; animation-duration: 16s; background: #ff9f1c"
+        ></div>
+        <div
+          class="particle"
+          style="left: 70%; animation-duration: 22s; background: #95e1d3"
+        ></div>
+        <div
+          class="particle"
+          style="left: 85%; animation-duration: 17s; background: #f7d794"
+        ></div>
+      </div>
+    </footer>
   </body>
 </html>

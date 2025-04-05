@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
-
   // Hiển thị trang chủ
   homeContainer.classList.remove("hidden");
 
@@ -22,7 +20,7 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 let timerInterval = null;
 let timeElapsed = 0;
-let timeLimit = 1800; // 20 phút (1200 giây)
+let timeLimit = 3600; // 20 phút (1200 giây)
 let shuffledQuestions = [];
 let wrongQuestions = [];
 let isDarkMode = true;
@@ -45,7 +43,6 @@ const homeContainer = document.getElementById("homeContainer");
 const quizContainer = document.getElementById("quizContainer");
 const quizQuestionContainer = document.getElementById("quizQuestionContainer");
 const resultContainer = document.getElementById("resultContainer");
-const statsContainer = document.getElementById("statsContainer");
 const quizList = document.getElementById("quizList");
 const quizTitle = document.getElementById("quizTitle");
 const quizDescription = document.getElementById("quizDescription");
@@ -67,7 +64,6 @@ const reviewWrongButton = document.getElementById("reviewWrongButton");
 const homeButton = document.getElementById("homeButton");
 const homeLink = document.getElementById("homeLink");
 const quizLink = document.getElementById("quizLink");
-const statsLink = document.getElementById("statsLink");
 const hamburgerBtn = document.getElementById("hamburgerBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const customModal = document.getElementById("customModal");
@@ -118,36 +114,6 @@ const scoreDistributionChart = document.getElementById(
 );
 const timeSpentChart = document.getElementById("timeSpentChart");
 const topicPerformanceChart = document.getElementById("topicPerformanceChart");
-
-// Theme toggle functionality
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  isDarkMode = document.body.classList.contains("dark");
-  localStorage.setItem("darkMode", isDarkMode);
-
-  // Update icon
-  const icon = themeToggle.querySelector("i");
-  if (isDarkMode) {
-    icon.classList.remove("fa-moon");
-    icon.classList.add("fa-sun");
-  } else {
-    icon.classList.remove("fa-sun");
-    icon.classList.add("fa-moon");
-  }
-
-  // Cập nhật lại biểu đồ
-  updateAllCharts();
-});
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem("darkMode");
-if (savedTheme === "true") {
-  document.body.classList.add("dark");
-  isDarkMode = true;
-  const icon = themeToggle.querySelector("i");
-  icon.classList.remove("fa-moon");
-  icon.classList.add("fa-sun");
-}
 
 // Create floating particles for home page
 function createParticles() {
@@ -389,7 +355,7 @@ async function loadQuizData() {
     console.error("Lỗi:", error);
     loadingQuizzes.classList.add("hidden");
     errorMessage.classList.remove("hidden");
-    await showCustomAlert("Không thể tải dữ liệu! Vui lòng thử lại.");
+    await showCustomAlert("Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam!");
   }
 }
 
@@ -492,63 +458,40 @@ function renderQuizList(quizzes) {
 
     // Generate a random gradient for each quiz card
     const gradients = [
-      "linear-gradient(45deg, #6366f1, #8b5cf6)",
-      "linear-gradient(45deg, #ec4899, #8b5cf6)",
-      "linear-gradient(45deg, #06b6d4, #10b981)",
-      "linear-gradient(45deg, #f59e0b, #ef4444)",
-      "linear-gradient(45deg, #10b981, #3b82f6)",
+      "linear-gradient(45deg,rgb(0, 4, 249),rgb(41, 20, 22))",
+      "linear-gradient(45deg,rgb(83, 19, 129), #8b5cf6)",
+      "linear-gradient(45deg,rgb(0, 46, 54),rgb(171, 210, 197))",
+      "linear-gradient(45deg,rgb(15, 25, 138),rgb(6, 56, 72))",
+      "linear-gradient(45deg,rgb(199, 138, 18),rgb(228, 67, 18))",
     ];
     const randomGradient = gradients[index % gradients.length];
 
     card.innerHTML = `
             <div class="quiz-card-header" style="background: ${randomGradient}">
-                <i class="fas fa-book-open quiz-card-icon"></i>
-                ${
-                  savedProgress
-                    ? '<span class="quiz-card-badge">Đang làm</span>'
-                    : ""
-                }
+                <i style="font-size: 3rem; color: white" class="fas fa-question-circle"></i>
+               
             </div>
             <div class="quiz-card-body">
                 <h3 class="quiz-card-title">${quiz.title}</h3>
-                <p class="quiz-card-description text-sm mb-4">${
-                  quiz.description
-                }</p>
+                <p class="quiz-card-description text-sm mb-4">${quiz.description}</p>
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-xs quiz-card-info">
-                        <i class="fas fa-question-circle mr-1"></i> ${
-                          quiz.questions.length
-                        } câu hỏi
+                        <i class="fas fa-question-circle mr-1"></i> ${quiz.questions.length} câu hỏi
                     </span>
                     <span class="text-xs quiz-card-info">
-                        <i class="far fa-clock mr-1"></i> 30 phút
+                        <i class="far fa-clock mr-1"></i> 60 phút
                     </span>
                 </div>
                 <div class="quiz-card-buttons">
-                    <button class="quiz-btn quiz-btn-normal start-normal" data-quiz-id="${
-                      quiz.id
-                    }" aria-label="Làm bình thường">
-                        <i class="fas fa-play-circle mr-1"></i> Làm bình thường
-                    </button>
-                    <button class="quiz-btn quiz-btn-random start-random" data-quiz-id="${
-                      quiz.id
-                    }" aria-label="Làm ngẫu nhiên">
-                        <i class="fas fa-random mr-1"></i> Làm ngẫu nhiên
-                    </button>
-                    ${
-                      savedProgress
-                        ? `<button class="quiz-btn quiz-btn-reset reset-progress" data-quiz-id="${quiz.id}" aria-label="Xóa tiến trình">
-                        <i class="fas fa-trash-alt mr-1"></i> Xóa tiến trình
-                    </button>`
-                        : ""
-                    }
+                    <button class="quiz-btn quiz-btn-normal start-normal" data-quiz-id="${quiz.id}" aria-label="Làm bình thường">
+                        <i class="fas fa-play-circle mr-1"></i> Làm ngay
+                   
                 </div>
             </div>
         `;
     quizList.appendChild(card);
 
     card.querySelector(".start-normal").onclick = () => startQuiz(quiz, false);
-    card.querySelector(".start-random").onclick = () => startQuiz(quiz, true);
     const resetButton = card.querySelector(".reset-progress");
     if (resetButton) {
       resetButton.onclick = async (e) => {
@@ -571,8 +514,6 @@ function displayQuizList() {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
-
   // Chỉ hiển thị danh sách bài tập
   quizContainer.classList.remove("hidden");
 
@@ -595,8 +536,6 @@ function startQuiz(quiz, isRandom = false) {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
-
   // Chỉ hiển thị container câu hỏi
   quizQuestionContainer.classList.remove("hidden");
 
@@ -746,7 +685,6 @@ resetProgressButton.onclick = async () => {
     quizQuestionContainer.classList.add("hidden");
     quizContainer.classList.remove("hidden");
     homeContainer.classList.add("hidden");
-    statsContainer.classList.add("hidden");
     displayQuizList();
     // Đã loại bỏ dòng này để cho phép cuộn trang
     // toggleHomePageScrolling();
@@ -759,7 +697,6 @@ backButton.onclick = () => {
   quizQuestionContainer.classList.add("hidden");
   quizContainer.classList.remove("hidden");
   homeContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
   displayQuizList();
   // Đã loại bỏ dòng này để cho phép cuộn trang
   // toggleHomePageScrolling();
@@ -870,7 +807,6 @@ homeButton.onclick = () => {
   resultContainer.classList.add("hidden");
   homeContainer.classList.remove("hidden");
   quizContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
   // Đã loại bỏ dòng này để cho phép cuộn trang
   // toggleHomePageScrolling();
   updateStatsDisplay();
@@ -882,7 +818,6 @@ function showHome() {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
 
   // Chỉ hiển thị trang chủ
   homeContainer.classList.remove("hidden");
@@ -900,7 +835,6 @@ function showStats() {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
 
   // Chỉ hiển thị trang thống kê
   statsContainer.classList.remove("hidden");
@@ -925,16 +859,9 @@ quizLink.onclick = (e) => {
   quizContainer.classList.remove("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
   displayQuizList();
   // Đã loại bỏ dòng này để cho phép cuộn trang
   // toggleHomePageScrolling();
-};
-
-statsLink.onclick = (e) => {
-  e.preventDefault();
-  stopTimer();
-  showStats();
 };
 
 document.getElementById("mobileHomeLink").onclick = (e) => {
@@ -945,11 +872,6 @@ document.getElementById("mobileHomeLink").onclick = (e) => {
 document.getElementById("mobileQuizLink").onclick = (e) => {
   e.preventDefault();
   quizLink.click();
-};
-
-document.getElementById("mobileStatsLink").onclick = (e) => {
-  e.preventDefault();
-  statsLink.click();
 };
 
 // Add keyboard navigation
@@ -1865,7 +1787,6 @@ function init() {
   quizContainer.classList.add("hidden");
   quizQuestionContainer.classList.add("hidden");
   resultContainer.classList.add("hidden");
-  statsContainer.classList.add("hidden");
 
   // Hiển thị trang chủ
   homeContainer.classList.remove("hidden");
